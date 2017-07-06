@@ -126,10 +126,10 @@ def macro_not_found(model, target_macro_id):
 def missing_materialization(model, adapter_type):
     materialization = get_materialization(model)
 
-    valid_types = "'base'"
+    valid_types = "'default'"
 
-    if adapter_type != 'base':
-        valid_types = "'base' and '{}'".format(adapter_type)
+    if adapter_type != 'default':
+        valid_types = "'default' and '{}'".format(adapter_type)
 
     raise_compiler_error(
         model,
@@ -142,6 +142,13 @@ def missing_sql_where(model):
         model,
         "Model '{}' is materialized as 'incremental', but does not have a "
         "sql_where defined in its config.".format(model.get('unique_id')))
+
+
+def missing_config(model, name):
+    raise_compiler_error(
+        model,
+        "Model '{}' does not define a required config parameter '{}'."
+        .format(model.get('unique_id'), name))
 
 
 def invalid_materialization_argument(name, argument):
