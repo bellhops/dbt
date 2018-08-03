@@ -4,7 +4,7 @@ from distutils.core import setup
 
 
 package_name = "dbt"
-package_version = "0.9.1"
+package_version = "0.9.2"
 
 setup(
     name=package_name,
@@ -38,7 +38,7 @@ setup(
         'psycopg2==2.7.1',
         'sqlparse==0.2.3',
         'networkx==1.11',
-        'csvkit==0.9.1',
+        'csvkit==1.0.0',
         'snowplow-tracker==0.7.2',
         'celery==3.1.23',
         'voluptuous==0.10.5',
